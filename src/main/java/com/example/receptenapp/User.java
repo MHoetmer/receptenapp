@@ -20,16 +20,15 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long fId;
 
-    private final String username;
-    private final String password;
-    private final String fullname;
-    private final String street;
-    private final String city;
-    private final String state;
-    private final String zip;
-    private final String phoneNumber;
+    private final String fUsernaam;
+    private final String fPaswoord;
+    private final String fNaam;
+    private final String fStraat;
+    private final String fStad;
+    private final String fPostcode;
+    private final String fTelefoonnummer;
 
 
 }

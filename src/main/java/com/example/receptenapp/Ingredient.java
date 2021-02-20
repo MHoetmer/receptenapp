@@ -14,10 +14,12 @@ import javax.persistence.Id;
 @Entity
 public class Ingredient {
     @Id
-    private final String id;
-    private final String name;
-    private final Type type;
+    private final long Id;
+    private final String Naam;
+    private final Type Type;
 
+
+    @RequiredArgsConstructor
     public static enum Type {
         OLIE, AZIJN, VLOEISTOF, BROOD, SAUS, GROENTE, KRUIDEN, GRAAN, PASTA, OVERIG
     }
