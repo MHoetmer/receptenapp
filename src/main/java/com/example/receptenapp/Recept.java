@@ -1,37 +1,27 @@
 package com.example.receptenapp;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.Entity;
 
 @Data
+@RequiredArgsConstructor
+@NoArgsConstructor(force = true)
 @Entity
 public class Recept {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    private final int Id;
+    private final String Naam;
+    private final int Bereidingstijd;
 
-    @NotNull
-    @Size(min = 5, message = "Name must be at least 5 characters long")
-    private String Naam;
-
-    private Date Aangemaakt;
-
-    private int BereindsTijd;
-
-    @ManyToMany(targetEntity = Ingredient.class)
-    @Size(min = 1, message = "You must choose at least 1 ingredient")
-    private List<Ingredient> Ingredienten;
-
-    private String Bereiding;
-
-    private int Kosten;
-
-    private String Persoon;
+    // @ManyToMany(targetEntity = Ingredient.class)
+    // private List<Ingredient> Ingredienten;
+    private final String Bereiding;
+    private final int Kosten;
+    private final String Persoon;
 
 }
