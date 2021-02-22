@@ -1,21 +1,21 @@
 package com.example.receptenapp;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor(force = true)
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @Entity
 public class Recept {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private final int Id;
     private final String Naam;
     private final int Bereidingstijd;

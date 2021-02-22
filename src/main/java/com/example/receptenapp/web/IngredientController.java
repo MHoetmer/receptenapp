@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 public class IngredientController {
@@ -20,10 +21,11 @@ public class IngredientController {
     }
 
     @GetMapping("/ingredient/{id}")
-    public Ingredient recept(@PathVariable(value = "id") int id) {
+    public Ingredient recept(@PathVariable(value = "id") String id) {
         System.out.println("showIngredient " + id);
-        Ingredient ingredient = ingredientRepository.findOne(id);
-        return ingredient;
+        Optional<Ingredient> optionalIngredient = ingredientRepository.findById(id);
+        return optionalIngredient.isPresent() ?
+                optionalIngredient.get() : null;
     }
 
     @GetMapping("/ingredienten")

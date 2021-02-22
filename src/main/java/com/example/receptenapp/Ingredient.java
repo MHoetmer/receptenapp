@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Data
 @RequiredArgsConstructor
@@ -13,7 +14,8 @@ import javax.persistence.Entity;
 @Entity
 public class Ingredient {
 
-    private final long Id;
+    @Id
+    private final String Id;
     private final String Naam;
     private final Type Type;
 

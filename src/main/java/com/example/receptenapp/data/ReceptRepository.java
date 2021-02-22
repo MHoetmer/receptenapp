@@ -2,12 +2,9 @@ package com.example.receptenapp.data;
 
 
 import com.example.receptenapp.Recept;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ReceptRepository {
-    Iterable<Recept> findAll();
+public interface ReceptRepository extends CrudRepository<Recept, Integer> {
 
-    Recept findOne(int id);
-
-    Recept save(Recept ingredient);
 
 }

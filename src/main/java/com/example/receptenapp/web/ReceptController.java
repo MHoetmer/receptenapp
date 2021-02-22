@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 @RestController("/recept")
@@ -26,8 +27,9 @@ public class ReceptController {
     @GetMapping("/recept/{id}")
     public Recept recept(@PathVariable(value = "id") int id) {
         System.out.println("showRecept " + id);
-        Recept recept = receptRepository.findOne(id);
-        return recept;
+        Optional<Recept> optionalRecept = receptRepository.findById(id);
+        return optionalRecept.isPresent() ?
+                optionalRecept.get() : null;
     }
 
     @GetMapping("/recepten")
