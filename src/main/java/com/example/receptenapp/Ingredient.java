@@ -17,7 +17,6 @@ public class Ingredient {
     private final String Naam;
     private final Type Type;
 
-
     @RequiredArgsConstructor
     public static enum Type {
         OLIE, AZIJN, VLOEISTOF, BROOD, SAUS, GROENTE, KRUIDEN, GRAAN, PASTA, OVERIG

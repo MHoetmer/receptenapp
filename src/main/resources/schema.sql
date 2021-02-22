@@ -1,13 +1,13 @@
 
 
 create table if not exists Ingredient(
-    id bigint not null primary key,
+    id bigint not null primary key AUTO_INCREMENT,
     naam varchar(25) not null,
     type varchar(10) not null
 );
 
 create table if not exists Recept(
-    id bigint not null primary key,
+    id bigint not null primary key AUTO_INCREMENT,
     naam varchar(25) not null,
     bereidingstijd int,
     bereiding varchar(225),
