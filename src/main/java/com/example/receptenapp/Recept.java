@@ -3,27 +3,26 @@ package com.example.receptenapp;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
-@RequiredArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Recept {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private final int Id;
-    private final String Naam;
-    private final int Bereidingstijd;
+    private int Id;
+    private String Naam;
+    private int Bereidingstijd;
 
     @ManyToMany(targetEntity = Ingredient.class)
     private List<Ingredient> Ingredienten;
-    private final String Bereiding;
-    private final int Kosten;
-    private final String Persoon;
+    private String Bereiding;
+    private int Kosten;
+    private String Persoon;
 
 }

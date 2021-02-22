@@ -3,9 +3,7 @@ package com.example.receptenapp.web;
 import com.example.receptenapp.Ingredient;
 import com.example.receptenapp.data.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -21,7 +19,7 @@ public class IngredientController {
     }
 
     @GetMapping("/ingredient/{id}")
-    public Ingredient recept(@PathVariable(value = "id") String id) {
+    public Ingredient recept(@PathVariable(value = "id") int id) {
         System.out.println("showIngredient " + id);
         Optional<Ingredient> optionalIngredient = ingredientRepository.findById(id);
         return optionalIngredient.isPresent() ?
@@ -33,5 +31,12 @@ public class IngredientController {
         System.out.println("showIngredienten");
         ArrayList<Ingredient> ingredienten = (ArrayList<Ingredient>) ingredientRepository.findAll();
         return ingredienten;
+    }
+
+    @PostMapping("/saveingredient")
+    public Ingredient saveIngredient(@RequestBody Ingredient ingredient) throws NoSuchFieldException, IllegalAccessException {
+        System.out.println("saveIngredient " + ingredient.getNaam() + " id ");
+        Ingredient savedIngredient = ingredientRepository.save(ingredient);
+        return savedIngredient;
     }
 }

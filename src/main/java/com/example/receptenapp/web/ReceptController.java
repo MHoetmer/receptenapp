@@ -1,12 +1,9 @@
 package com.example.receptenapp.web;
 
 import com.example.receptenapp.Recept;
-import com.example.receptenapp.data.IngredientRepository;
 import com.example.receptenapp.data.ReceptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -15,12 +12,10 @@ import java.util.Optional;
 @RestController("/recept")
 public class ReceptController {
 
-    private final IngredientRepository ingredientRepository;
     private final ReceptRepository receptRepository;
 
     @Autowired
-    public ReceptController(IngredientRepository aIngredientRepository, ReceptRepository aRecepRepository) {
-        this.ingredientRepository = aIngredientRepository;
+    public ReceptController(ReceptRepository aRecepRepository) {
         this.receptRepository = aRecepRepository;
     }
 
@@ -37,6 +32,14 @@ public class ReceptController {
         System.out.println("showRecepten");
         ArrayList<Recept> recepten = (ArrayList<Recept>) receptRepository.findAll();
         return recepten;
+    }
+
+    //TODO: save Ingredients
+    @PostMapping("/saverecept")
+    public Recept saveRecept(@RequestBody Recept recept) {
+        System.out.println("saveRecept " + recept.getNaam() + " id ");
+        Recept savedRecept = receptRepository.save(recept);
+        return savedRecept;
     }
 
 

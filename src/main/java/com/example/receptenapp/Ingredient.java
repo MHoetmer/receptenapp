@@ -6,21 +6,27 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.ArrayList;
 
 @Data
-@RequiredArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Ingredient {
 
     @Id
-    private final String Id;
-    private final String Naam;
-    private final Type Type;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int Id;
+    private String Naam;
+    private ArrayList<Type> Type;
+
 
     @RequiredArgsConstructor
     public static enum Type {
         OLIE, AZIJN, VLOEISTOF, BROOD, SAUS, GROENTE, KRUIDEN, GRAAN, PASTA, OVERIG
     }
+
 }
