@@ -10,16 +10,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class DemoApplication {
+public class ReceptenApplication {
     static Logger log = LoggerFactory.getLogger("test");
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(ReceptenApplication.class, args);
     }
 
     @Bean
     public CommandLineRunner dataLoader(IngredientRepository ingredientenRepo, ReceptRepository receptRepo) {
-        /**Ingredient ingr1 = new Ingredient(1, "Olijfolie", Ingredient.Type.OLIE);
+        /** Ingredient ingr1 = new Ingredient(1, "Olijfolie", Ingredient.Type.OLIE);
          Ingredient ingr2 = new Ingredient(2, "Appelazijn", Ingredient.Type.AZIJN);
          Ingredient ingr3 = new Ingredient(3, "Soya melk", Ingredient.Type.VLOEISTOF);
          Ingredient ingr4 = new Ingredient(4, "Spelt brood", Ingredient.Type.BROOD);

@@ -19,7 +19,7 @@ public class Recept {
     private String Naam;
     private int Bereidingstijd;
 
-    @ManyToMany(targetEntity = Ingredient.class)
+    @OneToMany(targetEntity = Ingredient.class)
     private List<Ingredient> Ingredienten;
     private String Bereiding;
     private int Kosten;
